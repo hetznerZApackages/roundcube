@@ -1,0 +1,31 @@
+Missing source files
+--------------------
+
+Roundcube ships a tar.gz ready to use that embeds minified javascript
+libraries. The GPL requires you to provide the corresponding source code.
+
+For Debian all missing sources are bundled in this directory. They have been
+grabbed from the various upstream projects.
+
+Last synchronization was made with roundcube v1.2.1 at 2016-08-03.
+
+Files: plugins/legacy_browser/js/jquery.min.js
+Project: jQuery v1.11.0
+License: Expat
+Source: http://code.jquery.com/jquery-1.11.0.js
+
+Files: program/js/jquery.min.js
+Project: jQuery v2.1.4
+License: Expat
+Source: http://code.jquery.com/jquery-2.1.4.js
+
+Files: program/js/tinymce/*
+Project: TinyMCE v4.3.13
+License: LGPL 2.1
+Comment: The subdirectoy roundcube is added from roundcube itself
+Source: http://download.ephox.com/tinymce/community/tinymce_4.3.13_dev.zip
+
+Files: program/js/jstz.min.js
+Project: jstz
+License: Expat
+Source: https://bitbucket.org/pellepim/jstimezonedetect/downloads

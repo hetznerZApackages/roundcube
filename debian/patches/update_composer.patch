@@ -1,0 +1,44 @@
+Description: Update PHP pear dependecies
+ The current dependencies that are published by upstream are too
+ conservative.
+ * So replace ~ (that only allows minor versions changes) with >= as documented
+ in the INSTALL file.
+ * delete dependency to net_idna2, that is only needed for PHP < 5.3
+   (idn_to_utf8 and idn_to_ascii)
+Author: Sandro Knauß <bugs@sandroknauss.de>
+Origin: Debian
+Last-Update: 2016-08-03
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/composer.json-dist
++++ b/composer.json-dist
+@@ -22,21 +22,19 @@
+     ],
+     "require": {
+         "php": ">=5.3.7",
+-        "pear/pear-core-minimal": "~1.10.1",
+-        "roundcube/plugin-installer": "~0.1.6",
+-        "pear-pear.php.net/net_socket": "~1.0.12",
+-        "pear-pear.php.net/auth_sasl": "~1.0.6",
+-        "pear-pear.php.net/net_idna2": "~0.1.1",
+-        "pear-pear.php.net/mail_mime": "~1.10.0",
+-        "pear-pear.php.net/net_smtp": "~1.7.1",
+-        "pear-pear.php.net/crypt_gpg": "~1.4.2",
+-        "roundcube/net_sieve": "~1.5.0"
++        "roundcube/plugin-installer": ">=0.1.6",
++        "pear-pear.php.net/net_socket": ">=1.0.12",
++        "pear-pear.php.net/auth_sasl": ">=1.0.6",
++        "pear-pear.php.net/mail_mime": ">=1.10.0",
++        "pear-pear.php.net/net_smtp": ">=1.7.1",
++        "roundcube/net_sieve": ">=1.5.0"
+     },
+     "require-dev": {
+         "phpunit/phpunit": "*"
+     },
+     "suggest": {
+-        "pear-pear.php.net/net_ldap2": "~2.2.0 required for connecting to LDAP address books",
++        "pear-pear.php.net/net_ldap2": ">=2.2.0",
++        "pear-pear.php.net/crypt_gpg": ">=1.4.2",
+         "kolab/Net_LDAP3": "dev-master required for connecting to LDAP address books"
+     },
+     "minimum-stability": "dev"

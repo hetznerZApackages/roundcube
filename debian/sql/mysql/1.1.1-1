@@ -1,0 +1,49 @@
+/* update from 2013011700 -> 2013061000 */
+
+/* 2013042700 */
+-- empty
+
+/* 2013052500 */
+CREATE TABLE `cache_shared` (
+ `cache_key` varchar(255) /*!40101 CHARACTER SET ascii COLLATE ascii_general_ci */ NOT NULL,
+ `created` datetime NOT NULL DEFAULT '1000-01-01 00:00:00',
+ `data` longtext NOT NULL,
+ INDEX `created_index` (`created`),
+ INDEX `cache_key_index` (`cache_key`)
+) /*!40000 ENGINE=INNODB */ /*!40101 CHARACTER SET utf8 COLLATE utf8_general_ci */;
+
+/* 2013061000 */
+ALTER TABLE `cache` ADD `expires` datetime DEFAULT NULL;
+ALTER TABLE `cache_shared` ADD `expires` datetime DEFAULT NULL;
+ALTER TABLE `cache_index` ADD `expires` datetime DEFAULT NULL;
+ALTER TABLE `cache_thread` ADD `expires` datetime DEFAULT NULL;
+ALTER TABLE `cache_messages` ADD `expires` datetime DEFAULT NULL;
+
+-- initialize expires column with created/changed date + 7days
+UPDATE `cache` SET `expires` = `created` + interval 604800 second;
+UPDATE `cache_shared` SET `expires` = `created` + interval 604800 second;
+UPDATE `cache_index` SET `expires` = `changed` + interval 604800 second;
+UPDATE `cache_thread` SET `expires` = `changed` + interval 604800 second;
+UPDATE `cache_messages` SET `expires` = `changed` + interval 604800 second;
+
+ALTER TABLE `cache` DROP INDEX `created_index`;
+ALTER TABLE `cache_shared` DROP INDEX `created_index`;
+ALTER TABLE `cache_index` DROP `changed`;
+ALTER TABLE `cache_thread` DROP `changed`;
+ALTER TABLE `cache_messages` DROP `changed`;
+
+ALTER TABLE `cache` ADD INDEX `expires_index` (`expires`);
+ALTER TABLE `cache_shared` ADD INDEX `expires_index` (`expires`);
+ALTER TABLE `cache_index` ADD INDEX `expires_index` (`expires`);
+ALTER TABLE `cache_thread` ADD INDEX `expires_index` (`expires`);
+ALTER TABLE `cache_messages` ADD INDEX `expires_index` (`expires`);
+
+/* 2014042900 */
+ALTER TABLE `users` CHANGE `preferences` `preferences` longtext;
+
+/* 2015030800 */
+ALTER TABLE `identities` CHANGE `signature` `signature` longtext;
+
+/* update system table */
+UPDATE system SET value='2015030800' WHERE name='roundcube-version';
+

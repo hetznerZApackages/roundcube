@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+for link in \
+    /usr/share/roundcube/program/js/tinymce \
+    /usr/share/roundcube/program/js/jquery.js \
+    /usr/share/roundcube/program/js/jquery.min.js \
+    /usr/share/roundcube/plugins/jqueryui/css \
+    /usr/share/roundcube/plugins/jqueryui/js/i18n \
+    /usr/share/roundcube/plugins/jqueryui/js/jquery-ui.min.js; do
+    [ ! -L $link ] || rm $link
+done
+
+#DEBHELPER#
+
+exit 0

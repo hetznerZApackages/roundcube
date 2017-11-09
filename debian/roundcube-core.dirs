@@ -1,0 +1,13 @@
+etc/default
+etc/roundcube
+etc/roundcube/plugins/jqueryui
+usr/share/dbconfig-common/data/roundcube/install
+usr/share/dbconfig-common/data/roundcube/upgrade/mysql
+usr/share/dbconfig-common/data/roundcube/upgrade/pgsql
+usr/share/dbconfig-common/data/roundcube/upgrade/sqlite3
+usr/share/roundcube
+var/lib/roundcube/config
+var/lib/roundcube/plugins
+var/lib/roundcube/skins
+var/lib/roundcube/temp
+var/log/roundcube

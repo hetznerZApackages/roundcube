@@ -1,0 +1,136 @@
+# Translation of roundcube debconf templates to Polish.
+# Copyright (C) 2011
+# This file is distributed under the same license as the roundcube package.
+# 
+# Magdalena Z. Kubot <magdalena.kubot@gmail.com>.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: roundcube@packages.debian.org\n"
+"POT-Creation-Date: 2009-02-15 17:05+0100\n"
+"PO-Revision-Date: 2013-11-06 20:41+0100\n"
+"Last-Translator: Magdalena Z. Kubot <magdalena.kubot@gmail.com>\n"
+"Language-Team: Polski <debian-l10n-polish@lists.debian.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:2001
+msgid "apache2"
+msgstr "apache2"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:2001
+msgid "lighttpd"
+msgstr "lighttpd"
+
+#. Type: multiselect
+#. Description
+#: ../templates:2002
+msgid "Web server(s) to configure automatically:"
+msgstr "Serwer(y) WWW, które mają być konfigurowane automatycznie:"
+
+#. Type: multiselect
+#. Description
+#: ../templates:2002
+msgid ""
+"RoundCube supports any web server supported by PHP, however only Apache 2 "
+"and lighttpd can be configured automatically."
+msgstr ""
+"RoundCube współpracuje z wszystkimi serwerami WWW obsługiwanymi przez PHP, "
+"jednakże tylko Apache 2 i lighttpd mogą być konfigurowane automatycznie."
+
+#. Type: multiselect
+#. Description
+#: ../templates:2002
+msgid ""
+"Please select the web server(s) that should be configured automatically for "
+"RoundCube."
+msgstr ""
+"Wybierz, który(e) serwer(y) WWW mają być konfigurowane automatycznie dla "
+"RoundCube."
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid "Should the webserver(s) be restarted now?"
+msgstr "Zrestartować serwer(y) WWW?"
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid ""
+"In order to activate the new configuration, the reconfigured web server(s) "
+"have to be restarted."
+msgstr ""
+"Aby aktywować nowe ustawienia, skonfigurowany(e) serwer(y) WWW muszą zostać "
+"zrestartowane."
+
+#. Type: string
+#. Description
+#: ../templates:4001
+msgid "IMAP server(s) used with RoundCube:"
+msgstr "Serwer(y) IMAP używane z RoundCube:"
+
+#. Type: string
+#. Description
+#: ../templates:4001
+msgid "Please select the IMAP server(s) that should be used with RoundCube."
+msgstr "Wybierz serwer(y) IMAP, które mają być używane z RoundCube"
+
+#. Type: string
+#. Description
+#: ../templates:4001
+msgid ""
+"If this is left blank, a text box will be displayed at login. Entering a "
+"space-separated list of hosts will display a pull-down menu. Entering a "
+"single host will enforce using this host."
+msgstr ""
+"Jeżeli to pole pozostanie puste, podczas logowania będzie wyświetlone pole "
+"tekstowe. Wprowadzenie oddzielonych spacjami komputerów spowoduje "
+"wyświetlanie rozwijanego menu. Wprowadzenie jednego komputera wymusi jego "
+"użycie."
+
+#. Type: string
+#. Description
+#: ../templates:4001
+msgid ""
+"To use SSL connections, please enter host names as 'ssl://hostname:993'."
+msgstr ""
+"Aby użyć połączeń SSL, wprowadź nazwy komputerów jako 'ssl://nazwa:993'."
+
+#. Type: select
+#. Description
+#: ../templates:5001
+msgid "Default language:"
+msgstr "Domyslny język:"
+
+#. Type: select
+#. Description
+#: ../templates:5001
+msgid "Please choose the default language for RoundCube."
+msgstr "Wybierz domyślny język dla RoundCube"
+
+#. Type: select
+#. Description
+#: ../templates:5001
+msgid "This choice can be overridden by individual users in their preferences."
+msgstr ""
+"Ten wybór może być nadpisany przez indywidualnych użytkowników w ich "
+"preferencjach."
+
+#. Type: select
+#. Description
+#: ../templates:5001
+msgid ""
+"However, the default language will be used for the login screen and the "
+"first connection of users."
+msgstr ""
+"Jednakże, domyślny język będzie używany dla ekranu logowania oraz pierwszego "
+"połączenia użytkowników."

@@ -1,0 +1,6 @@
+# because it is a webapp, you may wanna look at the installation process
+roundcube-core: package-contains-upstream-install-documentation usr/share/doc/roundcube-core/INSTALL.gz
+
+# Sorry, can't do better
+roundcube-core: embedded-javascript-library usr/share/roundcube/program/js/jquery*
+roundcube-core: font-in-non-font-package usr/share/roundcube/program/js/tinymce/skins/lightgray/fonts/*

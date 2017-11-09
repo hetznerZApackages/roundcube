@@ -1,0 +1,12 @@
+etc/roundcube var/lib/roundcube/config
+etc/roundcube/htaccess var/lib/roundcube/.htaccess
+etc/roundcube/plugins/jqueryui/config.inc.php usr/share/roundcube/plugins/jqueryui/config.inc.php
+usr/share/roundcube/config.inc.php.sample usr/share/doc/roundcube-core/config.inc.php.sample
+usr/share/roundcube/index.php var/lib/roundcube/index.php
+usr/share/roundcube/plugins/filesystem_attachments var/lib/roundcube/plugins/filesystem_attachments
+usr/share/roundcube/plugins/jqueryui var/lib/roundcube/plugins/jqueryui
+usr/share/roundcube/program var/lib/roundcube/program
+usr/share/roundcube/robots.txt var/lib/roundcube/robots.txt
+usr/share/roundcube/skins/classic var/lib/roundcube/skins/classic
+usr/share/roundcube/skins/larry var/lib/roundcube/skins/larry
+var/log/roundcube var/lib/roundcube/logs

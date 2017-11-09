@@ -1,0 +1,63 @@
+/* 2013042700 */
+ALTER SEQUENCE user_ids RENAME TO users_seq;
+ALTER TABLE users ALTER COLUMN user_id SET DEFAULT nextval('users_seq'::text);
+
+ALTER SEQUENCE identity_ids RENAME TO identities_seq;
+ALTER TABLE identities ALTER COLUMN identity_id SET DEFAULT nextval('identities_seq'::text);
+
+ALTER SEQUENCE contact_ids RENAME TO contacts_seq;
+ALTER TABLE contacts ALTER COLUMN contact_id SET DEFAULT nextval('contacts_seq'::text);
+
+ALTER SEQUENCE contactgroups_ids RENAME TO contactgroups_seq;
+ALTER TABLE contactgroups ALTER COLUMN contactgroup_id SET DEFAULT nextval('contactgroups_seq'::text);
+
+ALTER SEQUENCE search_ids RENAME TO searches_seq;
+ALTER TABLE searches ALTER COLUMN search_id SET DEFAULT nextval('searches_seq'::text);
+
+
+/* 2013052500 */
+CREATE TABLE "cache_shared" (
+    cache_key varchar(255) NOT NULL,
+    created timestamp with time zone DEFAULT now() NOT NULL,
+    data text NOT NULL
+);
+
+CREATE INDEX cache_shared_cache_key_idx ON "cache_shared" (cache_key);
+CREATE INDEX cache_shared_created_idx ON "cache_shared" (created);
+
+
+/* 2013061000 */
+ALTER TABLE "cache" ADD expires timestamp with time zone DEFAULT NULL;
+ALTER TABLE "cache_shared" ADD expires timestamp with time zone DEFAULT NULL;
+ALTER TABLE "cache_index" ADD expires timestamp with time zone DEFAULT NULL;
+ALTER TABLE "cache_thread" ADD expires timestamp with time zone DEFAULT NULL;
+ALTER TABLE "cache_messages" ADD expires timestamp with time zone DEFAULT NULL;
+
+-- initialize expires column with created/changed date + 7days
+UPDATE "cache" SET expires = created + interval '604800 seconds';
+UPDATE "cache_shared" SET expires = created + interval '604800 seconds';
+UPDATE "cache_index" SET expires = changed + interval '604800 seconds';
+UPDATE "cache_thread" SET expires = changed + interval '604800 seconds';
+UPDATE "cache_messages" SET expires = changed + interval '604800 seconds';
+
+DROP INDEX cache_created_idx;
+DROP INDEX cache_shared_created_idx;
+ALTER TABLE "cache_index" DROP "changed";
+ALTER TABLE "cache_thread" DROP "changed";
+ALTER TABLE "cache_messages" DROP "changed";
+
+CREATE INDEX cache_expires_idx ON "cache" (expires);
+CREATE INDEX cache_shared_expires_idx ON "cache_shared" (expires);
+CREATE INDEX cache_index_expires_idx ON "cache_index" (expires);
+CREATE INDEX cache_thread_expires_idx ON "cache_thread" (expires);
+CREATE INDEX cache_messages_expires_idx ON "cache_messages" (expires);
+
+/* 2014042900 */
+-- empty
+
+/* 2015030800 */
+-- empty
+
+/* update system table */
+UPDATE system SET value='2015030800' WHERE name='roundcube-version';
+

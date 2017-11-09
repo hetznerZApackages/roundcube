@@ -1,0 +1,8 @@
+/* 2015111100 */
+ALTER TABLE `users`
+  ADD `failed_login` datetime DEFAULT NULL,
+  ADD `failed_login_counter` int(10) UNSIGNED DEFAULT NULL;
+
+/* update system table */
+UPDATE system SET value='2015111100' WHERE name='roundcube-version';
+

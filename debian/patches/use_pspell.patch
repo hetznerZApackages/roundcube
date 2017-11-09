@@ -1,0 +1,16 @@
+Instead of using Google by default, we use pspell to avoid to send each mail to Google...
+
+Index: roundcube/config/defaults.inc.php
+===================================================================
+--- roundcube.orig/config/defaults.inc.php	2016-05-09 23:40:50.697051724 +0200
++++ roundcube/config/defaults.inc.php	2016-05-09 23:41:56.650428506 +0200
+@@ -715,7 +715,8 @@
+ // Since Google shut down their public spell checking service, the default settings
+ // connect to http://spell.roundcube.net which is a hosted service provided by Roundcube.
+ // You can connect to any other googie-compliant service by setting 'spellcheck_uri' accordingly.
+-$config['spellcheck_engine'] = 'googie';
++// Debian: default to pspell to not trigger external APIs
++$config['spellcheck_engine'] = 'pspell';
+ 
+ // For locally installed Nox Spell Server or After the Deadline services,
+ // please specify the URI to call it.

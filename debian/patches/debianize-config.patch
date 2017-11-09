@@ -1,0 +1,24 @@
+By default we do not have any plugins available (these are in roundcube-plugins)
+Disableing spellshecking, because it needs recommended packages
+
+Index: roundcube/config/config.inc.php.sample
+===================================================================
+--- roundcube.orig/config/config.inc.php.sample	2016-05-09 23:08:18.264417068 +0200
++++ roundcube/config/config.inc.php.sample	2016-05-09 23:14:20.383911596 +0200
+@@ -72,10 +72,14 @@
+ $config['des_key'] = 'rcmail-!24ByteDESkey*Str';
+ 
+ // List of active plugins (in plugins/ directory)
++// Debian: install roundcube-plugins first to have any
+ $config['plugins'] = array(
+-    'archive',
+-    'zipdownload',
+ );
+ 
+ // skin name: folder from skins/
+ $config['skin'] = 'larry';
++
++// Disable spellchecking
++// Debian: spellshecking needs additional packages to be installed, or calling external APIs
++//         see defaults.inc.php for additional informations
++$config['enable_spellcheck'] = false;

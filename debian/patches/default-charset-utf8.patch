@@ -1,0 +1,15 @@
+Switch to UTF-8 as default charset
+
+Index: roundcube/config/defaults.inc.php
+===================================================================
+--- roundcube.orig/config/defaults.inc.php	2016-05-24 21:19:04.448575101 +0200
++++ roundcube/config/defaults.inc.php	2016-05-24 21:19:04.444575016 +0200
+@@ -1005,7 +1005,7 @@
+ // ----------------------------------
+ 
+ // Use this charset as fallback for message decoding
+-$config['default_charset'] = 'ISO-8859-1';
++$config['default_charset'] = 'UTF-8';
+ 
+ // skin name: folder from skins/
+ $config['skin'] = 'larry';

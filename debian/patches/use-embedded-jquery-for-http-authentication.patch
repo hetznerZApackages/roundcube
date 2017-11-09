@@ -1,0 +1,16 @@
+Description: avoid fetching jQuery from Google, use the embedded one
+ This page is also just an example. The user is expected to provide its own page.
+
+diff --git a/plugins/http_authentication/logout.html b/plugins/http_authentication/logout.html
+index 0a78a62f217f..61b17285692f 100644
+--- a/plugins/http_authentication/logout.html
++++ b/plugins/http_authentication/logout.html
+@@ -3,7 +3,7 @@
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <title>Logout</title>
+-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
++<script type="text/javascript" src="../../program/js/jquery.min.js"></script>
+ <script type="text/javascript">
+ 
+ // as seen on http://stackoverflow.com/questions/31326/is-there-a-browser-equivalent-to-ies-clearauthenticationcache

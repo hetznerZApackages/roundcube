@@ -1,0 +1,3 @@
+dir_to_symlink /var/lib/roundcube/config /etc/roundcube 1.1.2+dfsg.1-4
+rm_conffile /etc/roundcube/db.inc.php 1.0.0+dfsg.1-1~
+rm_conffile /etc/roundcube/main.inc.php 1.0.0+dfsg.1-1~

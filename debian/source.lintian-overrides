@@ -1,0 +1,11 @@
+# Those sources are not missing, they are in debian/missing-sources
+roundcube source: source-is-missing program/js/tinymce/*
+roundcube source: insane-line-length-in-source-file program/js/tinymce/*
+roundcube source: source-contains-prebuilt-javascript-object program/js/tinymce/*
+roundcube source: source-is-missing program/js/jquery*
+roundcube source: source-contains-prebuilt-javascript-object program/js/jquery*
+roundcube source: source-is-missing plugins/jquery*
+roundcube source: source-is-missing plugins/legacy_browser/js/jquery*
+roundcube source: source-contains-prebuilt-javascript-object plugins/legacy_browser/js/jquery*
+roundcube source: source-contains-prebuilt-javascript-object plugins/jqueryui/js/jquery*
+roundcube source: insane-line-length-in-source-file plugins/jqueryui/js/i18n/jquery*

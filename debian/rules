@@ -1,0 +1,95 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ --with phpcomposer
+
+override_dh_auto_build:
+	>plugins/jqueryui/js/jquery-ui-1.10.4.custom.min.js debian/create-jquery-ui-custom.sh debian/missing-sources/jquery-ui-1.10.4.zip
+	>program/js/jstz.min.js tar xzf debian/missing-sources/*-jstimezonedetect-*.tar.gz --wildcards --to-stdout '*/jstz.js'
+	>program/js/jquery.js cat debian/missing-sources/jquery-*.js
+
+override_dh_auto_clean:
+	rm -f program/js/jquery.js
+	rm -f program/js/jquery.min.js
+	rm -f program/js/jstz.min.js
+	rm -f plugins/jqueryui/js/jquery-ui-1.10.4.custom.min.js
+
+	debconf-updatepo
+
+override_dh_install:
+	dh_install
+
+	install -m 0644 $(CURDIR)/.htaccess $(CURDIR)/debian/roundcube-core/etc/roundcube/htaccess
+	install -m 0644 $(CURDIR)/composer.json-dist $(CURDIR)/debian/roundcube-core/usr/share/roundcube/composer.json
+
+	# database intial
+	install -m 0644 $(CURDIR)/SQL/mysql.initial.sql $(CURDIR)/debian/roundcube-core/usr/share/dbconfig-common/data/roundcube/install/mysql
+	install -m 0644 $(CURDIR)/SQL/postgres.initial.sql $(CURDIR)/debian/roundcube-core/usr/share/dbconfig-common/data/roundcube/install/pgsql
+	install -m 0644 $(CURDIR)/SQL/sqlite.initial.sql $(CURDIR)/debian/roundcube-core/usr/share/dbconfig-common/data/roundcube/install/sqlite3
+
+	#database update
+	cp -r $(CURDIR)/debian/sql/* $(CURDIR)/debian/roundcube-core/usr/share/dbconfig-common/data/roundcube/upgrade/
+
+	# Convert .js back to min.js
+	for js in $$(find $(CURDIR)/debian/roundcube-core -type f -name '*.js' -not -name '*.min.js' -print); do \
+		yui-compressor --type js "$$js" -o "$${js%.*}.min.js" ; \
+	done
+
+	# Plugins are in usr/share/roundcube/plugins, for each plugin
+	# if there is config.inc.php.dist, we symlink a config.inc.php
+	# in /etc/roundcube/plugins with some dummy content.
+	for package in roundcube-core roundcube-plugins; do \
+		for plugin in $(CURDIR)/debian/$${package}/usr/share/roundcube/plugins/*; do \
+			dh_link -p$${package} usr/share/roundcube/plugins/$${plugin##*/} \
+				var/lib/roundcube/plugins/$${plugin##*/} ; \
+			if [ ! -f $${plugin}/config.inc.php.dist ]; then continue; fi ; \
+			dh_installdirs -p$${package} etc/roundcube/plugins/$${plugin##*/} ; \
+			(echo "<?php" ; \
+			 echo "// Empty configuration for $${plugin##*/}" ; \
+			 echo "// See /usr/share/roundcube/plugins/$${plugin##*/}/config.inc.php.dist for instructions" ; \
+			 echo "// Check the access right of the file if you put sensitive information in it." ; \
+			 echo '$$config=array();' ; \
+			 echo "?>") > \
+				$(CURDIR)/debian/$${package}/etc/roundcube/plugins/$${plugin##*/}/config.inc.php ; \
+			dh_link -p$${package} etc/roundcube/plugins/$${plugin##*/}/config.inc.php \
+				usr/share/roundcube/plugins/$${plugin##*/}/config.inc.php ; \
+		done \
+	done
+
+	# Remove
+	rm debian/roundcube-core/usr/share/roundcube/program/js/tinymce/license.txt
+	rmdir debian/roundcube-core/var/lib/roundcube/config
+
+	#setup /usr/share/bug/$(package)/control files
+	for package in roundcube roundcube-core roundcube-mysql roundcube-sqlite3 roundcube-pgsql roundcube-plugins roundcube-sqlite3; do \
+		install -d $(CURDIR)/debian/$${package}/usr/share/bug/$${package} ;\
+		install -m 644 $(CURDIR)/debian/bug.control $(CURDIR)/debian/$${package}/usr/share/bug/$${package}/control ;\
+	done
+
+	#get rid of randomly '.gitignore' files
+	find $(CURDIR)/debian/roundcube-plugins/usr/share/roundcube -name '._*' -o -name '.gitignore' -delete ;
+
+	# password helpers is a experimental
+	rm $(CURDIR)/debian/roundcube-plugins/usr/share/roundcube/plugins/password/helpers/chgsaslpasswd.c
+	rm $(CURDIR)/debian/roundcube-plugins/usr/share/roundcube/plugins/password/helpers/chgvirtualminpasswd.c
+	rm $(CURDIR)/debian/roundcube-plugins/usr/share/roundcube/plugins/password/helpers/chpass-wrapper.py
+
+override_dh_fixperms:
+	dh_fixperms --
+
+	#only make scripts in bin dir executeable
+	find $(CURDIR)/debian/roundcube-core/usr/share/roundcube -type f -print0 | xargs -r0 chmod -x ;
+	find $(CURDIR)/debian/roundcube-core/usr/share/roundcube/bin -type f -print0 | xargs -r0 chmod +x ;
+
+	#make everything non executable
+	find $(CURDIR)/debian/roundcube-plugins/usr/share/roundcube -type f -print0 | xargs -r0 chmod -x ;
+	find $(CURDIR)/debian/roundcube-plugins/usr/share/roundcube -type d -empty -delete ;
+
+override_dh_installdocs:
+	dh_installdocs --link-doc=roundcube-core -proundcube -proundcube-plugins -proundcube-core
+	dh_installdocs -proundcube-mysql -proundcube-pgsql -proundcube-sqlite3
+	mv $(CURDIR)/debian/roundcube-core/usr/share/doc/roundcube-core/CHANGELOG $(CURDIR)/debian/roundcube-core/usr/share/doc/roundcube-core/changelog
+
+override_dh_phpcomposer:
+	dh_phpcomposer --sourcedirectory=$(CURDIR)/debian/roundcube-core/usr/share/roundcube
+

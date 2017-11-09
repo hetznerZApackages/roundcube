@@ -1,0 +1,8 @@
+version=3
+
+# uscan is a little bit too smart and creates for each group a match:
+#  for a normal version: 1.1.5..
+#  for a rc version: 1.2-rc.-rc.rc
+#  thats why we need these cracy uversionmangles
+options="uversionmangle=s/\.\.$//;s/-(rc|alpha|beta)\.-\1.\1/~\\1/,dversionmangle=s/\+dfsg\.\d+$//,pgpsigurlmangle=s/$/.asc/,repacksuffix=+dfsg.1" \
+    https://github.com/roundcube/roundcubemail/releases .*/roundcubemail-([\d\.]+(-(rc|alpha|beta))?)\.tar\.gz

@@ -1,0 +1,26 @@
+From 05eb928d2b7573da35a08105e1bfdaf3af362ccb Mon Sep 17 00:00:00 2001
+From: Guilhem Moulin <guilhem@guilhem.org>
+Date: Thu, 7 Jul 2016 14:08:49 +0200
+Subject: [PATCH] Set INSTALL_PATH to /var/lib/roundcube/ in bin/cleandb.sh
+
+Cf. https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=824676#20
+---
+ bin/cleandb.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/cleandb.sh b/bin/cleandb.sh
+index 0bf71ea..81ffd72 100755
+--- a/bin/cleandb.sh
++++ b/bin/cleandb.sh
+@@ -19,7 +19,7 @@
+  +-----------------------------------------------------------------------+
+ */
+ 
+-define('INSTALL_PATH', realpath(__DIR__ . '/..') . '/' );
++define('INSTALL_PATH', '/var/lib/roundcube/' );
+ 
+ require INSTALL_PATH.'program/include/clisetup.php';
+ 
+-- 
+2.8.1
+

@@ -1,0 +1,15 @@
+dbconfig-common_support.patch
+debianize-config.patch
+correct_install_path.patch
+use_pspell.patch
+loginbox-size.patch
+default-charset-utf8.patch
+debianize_password_plugin.patch
+map-sqlite3-to-sqlite.patch
+update_script.patch
+use-embedded-jquery-for-http-authentication.patch
+update_composer.patch
+Set-INSTALL_PATH-to-var-lib-roundcube-in-bin-cleandb.patch
+CVE-2017-6820.patch
+CVE-2017-8114.patch
+CVE-2017-16651.patch

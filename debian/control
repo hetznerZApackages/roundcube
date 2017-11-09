@@ -1,0 +1,114 @@
+Source: roundcube
+Section: web
+Priority: extra
+Maintainer: Debian Roundcube Maintainers <pkg-roundcube-maintainers@lists.alioth.debian.org>
+Uploaders: Vincent Bernat <bernat@debian.org>,
+           Sandro Knauß <hefee@debian.org>,
+           Guilhem Moulin <guilhem@debian.org>
+Build-Depends: debhelper (>= 9),
+               dh-buildinfo,
+               libjs-jquery-ui (>= 1.10),
+               pkg-php-tools,
+               po-debconf,
+               yui-compressor
+Homepage: https://www.roundcube.net/
+Standards-Version: 3.9.8
+Vcs-Git: https://anonscm.debian.org/git/pkg-roundcube/roundcube.git
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-roundcube/roundcube.git
+
+Package: roundcube-core
+Architecture: all
+Pre-Depends: dpkg (>= 1.17.14)
+Depends: dbconfig-common,
+         debconf,
+         libapache2-mod-php | php,
+         libmagic1,
+         php-pear (>= 1:1.10.1),
+         php-cli,
+         php-intl,
+         php-json,
+         php-mcrypt,
+         roundcube-mysql (= ${source:Version}) | roundcube-sqlite3 (= ${source:Version}) | roundcube-pgsql (= ${source:Version}),
+         ucf,
+         ${misc:Depends},
+         ${phpcomposer:Debian-require}
+Recommends: apache2 | lighttpd | spawn-fcgi | php-fpm | httpd-cgi,
+            php-gd,
+            php-pspell,
+            ${phpcomposer:Debian-recommend}
+Suggests: roundcube-plugins,
+          ${phpcomposer:Debian-suggest}
+Breaks: roundcube-plugins-extra (<= 0.6-20111030)
+Replaces: roundcube-plugins-extra (<= 0.6-20111030),
+          ${phpcomposer:Debian-replace}
+Description: skinnable AJAX based webmail solution for IMAP servers
+ RoundCube Webmail is a browser-based multilingual IMAP client with an
+ application-like user interface. It provides full functionality
+ expected from an e-mail client, including MIME support, address book,
+ folder manipulation and message filters.
+ .
+ The user interface is fully skinnable using XHTML and CSS 2.
+ .
+ This package provides the core code for roundcube. You should install
+ it along with one of the roundcube database metapackages.
+
+Package: roundcube
+Architecture: all
+Pre-Depends: dpkg (>= 1.17.14)
+Depends: roundcube-core (= ${source:Version}), ${misc:Depends}
+Breaks: roundcube-core (<< 1.1.1+dfsg.1-1)
+Description: skinnable AJAX based webmail solution for IMAP servers - metapackage
+ RoundCube Webmail is a browser-based multilingual IMAP client with an
+ application-like user interface. It provides full functionality
+ expected from an e-mail client, including MIME support, address book,
+ folder manipulation and message filters.
+ .
+ The user interface is fully skinnable using XHTML and CSS 2.
+ .
+ This package will install a full roundcube application.
+
+Package: roundcube-mysql
+Architecture: all
+Depends: mariadb-client | default-mysql-client | virtual-mysql-client,
+         php-mysqlnd | php-mysql,
+         ${misc:Depends}
+Suggests: mariadb-server | default-mysql-server
+Description: metapackage providing MySQL dependencies for RoundCube
+ This package provides MySQL dependencies for RoundCube Webmail, a
+ skinnable AJAX based webmail solution for IMAP servers. Install this
+ one if you want to use a MySQL database with RoundCube.
+
+Package: roundcube-pgsql
+Architecture: all
+Depends: php-pgsql, postgresql-client, ${misc:Depends}
+Suggests: postgresql
+Description: metapackage providing PostgreSQL dependencies for RoundCube
+ This package provides PostgreSQL dependencies for RoundCube Webmail,
+ a skinnable AJAX based webmail solution for IMAP servers. Install
+ this one if you want to use a PostgreSQL database with RoundCube.
+
+Package: roundcube-sqlite3
+Architecture: all
+Depends: php-sqlite3, sqlite3, ${misc:Depends}
+Description: metapackage providing SQLite dependencies for RoundCube
+ This package provides SQLite dependencies for RoundCube Webmail,
+ a skinnable AJAX based webmail solution for IMAP servers. Install
+ this one if you want to use a SQLite database with RoundCube.
+
+Package: roundcube-plugins
+Architecture: all
+Pre-Depends: dpkg (>= 1.17.14)
+Depends: roundcube-core (= ${source:Version}), ${misc:Depends}
+Suggests: php-crypt-gpg, php-net-sieve, php-zip
+Breaks: roundcube-plugins-extra (<= 0.7-20120110)
+Replaces: roundcube-plugins-extra (<= 0.7-20120110)
+Description: skinnable AJAX based webmail solution for IMAP servers - plugins
+ RoundCube Webmail is a browser-based multilingual IMAP client with an
+ application-like user interface. It provides full functionality
+ expected from an e-mail client, including MIME support, address book,
+ folder manipulation and message filters.
+ .
+ The user interface is fully skinnable using XHTML and CSS 2.
+ .
+ This package provides several plugins for Roundcube. They should be
+ enabled in the configuration of Roundcube.
