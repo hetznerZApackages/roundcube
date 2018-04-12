@@ -1,3 +1,9 @@
+roundcube (1.2.3+dfsg.1-4+deb9u1+hetz1~exp1) jessie-hetz-experimental; urgency=high
+
+  * Backport from Stretch
+
+ -- Walter Kleynscheldt <walter.kleynscheldt@hetzner.co.za>  Thu, 12 Apr 2018 08:47:45 +0200
+
 roundcube (1.2.3+dfsg.1-4+deb9u1) stretch-security; urgency=high
 
   * Backport fix for CVE-2017-16651: File disclosure vulnerability caused by
