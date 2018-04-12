@@ -1,3 +1,9 @@
+roundcube (1.2.3+dfsg.1-4+deb9u1+hetz1~exp2) jessie-hetz-experimental; urgency=high
+
+  * Bump php dependencies to use php7 and remove phpcomposer as dependency
+
+ -- Walter Kleynscheldt <walter.kleynscheldt@hetzner.co.za>  Thu, 12 Apr 2018 10:15:52 +0200
+
 roundcube (1.2.3+dfsg.1-4+deb9u1+hetz1~exp1) jessie-hetz-experimental; urgency=high
 
   * Backport from Stretch
