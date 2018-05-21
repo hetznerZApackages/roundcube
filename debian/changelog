@@ -1,3 +1,22 @@
+roundcube (1.2.3+dfsg.1-4+deb9u2+hetz1~exp1) jessie-hetz-experimental; urgency=high
+
+  * Import upstream release 
+
+ -- Shaun Bugler - Hetzner <sb@hetzner.co.za>  Mon, 21 May 2018 15:42:42 +0200
+
+roundcube (1.2.3+dfsg.1-4+deb9u2) stretch-security; urgency=high
+
+  * Backport fix for CVE-2018-9846: When the archive plugin enabled and
+    configured, it's possible to exploit the unsanitized, user-controlled
+    "_uid" parameter to perform an MX (IMAP) injection attack.
+    https://github.com/roundcube/roundcubemail/issues/6238
+    (Closes: #895184).
+  * Backport fix for CVE-2018-1000071: Insecure Permissions vulnerability in
+    enigma plugin that can result in exfiltration of gpg private key.
+    https://github.com/roundcube/roundcubemail/issues/6173
+
+ -- Guilhem Moulin <guilhem@debian.org>  Sat, 21 Apr 2018 01:51:56 +0200
+
 roundcube (1.2.3+dfsg.1-4+deb9u1+hetz1~exp2) jessie-hetz-experimental; urgency=high
 
   * Bump php dependencies to use php7 and remove phpcomposer as dependency
