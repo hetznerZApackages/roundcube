@@ -1,3 +1,9 @@
+roundcube (1.2.3+dfsg.1-4+deb9u2+hetz2~exp1) jessie-hetz-experimental; urgency=high
+
+  * Use php7.0 
+
+ -- Shaun Bugler - Hetzner <sb@hetzner.co.za>  Tue, 22 May 2018 16:01:30 +0200
+
 roundcube (1.2.3+dfsg.1-4+deb9u2+hetz1) jessie-hetz; urgency=high
 
   * Released 1.2.3+dfsg.1-4+deb9u2+hetz1~exp2 as 1.2.3+dfsg.1-4+deb9u2+hetz1
