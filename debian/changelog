@@ -1,3 +1,9 @@
+roundcube (1.2.3+dfsg.1-4+deb9u2+hetz2) jessie-hetz; urgency=high
+
+  * Released 1.2.3+dfsg.1-4+deb9u2+hetz2~exp4 as 1.2.3+dfsg.1-4+deb9u2+hetz2
+
+ -- Shaun Bugler - Hetzner <sb@hetzner.co.za>  Wed, 23 May 2018 14:01:15 +0200
+
 roundcube (1.2.3+dfsg.1-4+deb9u2+hetz2~exp4) jessie-hetz-experimental; urgency=high
 
   * Full list of php dependancies 
