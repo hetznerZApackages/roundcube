@@ -1,3 +1,9 @@
+roundcube (1.2.3+dfsg.1-4+deb9u2+hetz2~exp4) jessie-hetz-experimental; urgency=high
+
+  * Full list of php dependancies 
+
+ -- Shaun Bugler - Hetzner <sb@hetzner.co.za>  Wed, 23 May 2018 13:19:45 +0200
+
 roundcube (1.2.3+dfsg.1-4+deb9u2+hetz2~exp3) jessie-hetz-experimental; urgency=high
 
   * Use php7.0 
