@@ -13,3 +13,6 @@ Set-INSTALL_PATH-to-var-lib-roundcube-in-bin-cleandb.patch
 CVE-2017-6820.patch
 CVE-2017-8114.patch
 CVE-2017-16651.patch
+CVE-2018-9846.patch
+CVE-2018-1000071.patch
+CVE-2018-19206.patch

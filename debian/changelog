@@ -1,3 +1,25 @@
+roundcube (1.2.3+dfsg.1-4+deb9u3) stretch-security; urgency=high
+
+  * Backport fix for CVE-2018-19206: XSS vulnerability via crafted use of
+    <svg><style>, as demonstrated by an onload attribute in a BODY element,
+    within an HTML attachment.
+    https://github.com/roundcube/roundcubemail/issues/6410
+
+ -- Guilhem Moulin <guilhem@debian.org>  Sat, 24 Nov 2018 04:36:11 +0100
+
+roundcube (1.2.3+dfsg.1-4+deb9u2) stretch-security; urgency=high
+
+  * Backport fix for CVE-2018-9846: When the archive plugin enabled and
+    configured, it's possible to exploit the unsanitized, user-controlled
+    "_uid" parameter to perform an MX (IMAP) injection attack.
+    https://github.com/roundcube/roundcubemail/issues/6238
+    (Closes: #895184).
+  * Backport fix for CVE-2018-1000071: Insecure Permissions vulnerability in
+    enigma plugin that can result in exfiltration of gpg private key.
+    https://github.com/roundcube/roundcubemail/issues/6173
+
+ -- Guilhem Moulin <guilhem@debian.org>  Sat, 21 Apr 2018 01:51:56 +0200
+
 roundcube (1.2.3+dfsg.1-4+deb9u1) stretch-security; urgency=high
 
   * Backport fix for CVE-2017-16651: File disclosure vulnerability caused by
