@@ -1,3 +1,18 @@
+roundcube (1.2.3+dfsg.1-4+deb9u3+hetz1~exp1) jessie-hetz-experimental; urgency=high
+
+  * Import upstream security release 
+
+ -- Shaun Bugler - Hetzner <sb@hetzner.co.za>  Mon, 26 Nov 2018 10:15:50 +0200
+
+roundcube (1.2.3+dfsg.1-4+deb9u3) stretch-security; urgency=high
+
+  * Backport fix for CVE-2018-19206: XSS vulnerability via crafted use of
+    <svg><style>, as demonstrated by an onload attribute in a BODY element,
+    within an HTML attachment.
+    https://github.com/roundcube/roundcubemail/issues/6410
+
+ -- Guilhem Moulin <guilhem@debian.org>  Sat, 24 Nov 2018 04:36:11 +0100
+
 roundcube (1.2.3+dfsg.1-4+deb9u2+hetz2) jessie-hetz; urgency=high
 
   * Released 1.2.3+dfsg.1-4+deb9u2+hetz2~exp4 as 1.2.3+dfsg.1-4+deb9u2+hetz2
@@ -27,7 +42,6 @@ roundcube (1.2.3+dfsg.1-4+deb9u2+hetz1~exp2) jessie-hetz-experimental; urgency=h
   * Import upstream release 
 
  -- Shaun Bugler - Hetzner <sb@hetzner.co.za>  Mon, 21 May 2018 15:51:54 +0200
-
 roundcube (1.2.3+dfsg.1-4+deb9u2) stretch-security; urgency=high
 
   * Backport fix for CVE-2018-9846: When the archive plugin enabled and
@@ -53,6 +67,8 @@ roundcube (1.2.3+dfsg.1-4+deb9u1+hetz1~exp1) jessie-hetz-experimental; urgency=h
 
  -- Walter Kleynscheldt <walter.kleynscheldt@hetzner.co.za>  Thu, 12 Apr 2018 08:47:45 +0200
 
+=======
+>>>>>>> jessie
 roundcube (1.2.3+dfsg.1-4+deb9u1) stretch-security; urgency=high
 
   * Backport fix for CVE-2017-16651: File disclosure vulnerability caused by
