@@ -1,3 +1,12 @@
+roundcube (1.2.3+dfsg.1-4+deb9u3) stretch-security; urgency=high
+
+  * Backport fix for CVE-2018-19206: XSS vulnerability via crafted use of
+    <svg><style>, as demonstrated by an onload attribute in a BODY element,
+    within an HTML attachment.
+    https://github.com/roundcube/roundcubemail/issues/6410
+
+ -- Guilhem Moulin <guilhem@debian.org>  Sat, 24 Nov 2018 04:36:11 +0100
+
 roundcube (1.2.3+dfsg.1-4+deb9u2) stretch-security; urgency=high
 
   * Backport fix for CVE-2018-9846: When the archive plugin enabled and
