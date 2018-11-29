@@ -1,3 +1,9 @@
+roundcube (1.2.3+dfsg.1-4+deb9u3+hetz1) jessie-hetz; urgency=high
+
+  * Released 1.2.3+dfsg.1-4+deb9u3+hetz1~exp2 as 1.2.3+dfsg.1-4+deb9u3+hetz1
+
+ -- Shaun Bugler - Hetzner <sb@hetzner.co.za>  Thu, 29 Nov 2018 10:41:09 +0200
+
 roundcube (1.2.3+dfsg.1-4+deb9u3+hetz1~exp2) jessie-hetz-experimental; urgency=high
 
   * Import upstream security release 
