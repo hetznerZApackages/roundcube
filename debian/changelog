@@ -1,3 +1,13 @@
+roundcube (1.2.3+dfsg.1-4+deb9u4) stretch-security; urgency=high
+
+  * Backport security fixes from 1.2.10:
+    - CVE-2020-12625: Cross-Site Scripting (XSS) vulnerability via malicious
+      HTML messages (closes: #959140)
+    - CVE-2020-12626: CSRF attack can cause an authenticated user to be logged
+      out (closes: #959142)
+
+ -- Guilhem Moulin <guilhem@debian.org>  Mon, 04 May 2020 14:50:42 +0200
+
 roundcube (1.2.3+dfsg.1-4+deb9u3) stretch-security; urgency=high
 
   * Backport fix for CVE-2018-19206: XSS vulnerability via crafted use of
